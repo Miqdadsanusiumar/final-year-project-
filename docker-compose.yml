@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  lungnet-backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: lungnet-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - MODEL_PATH=/app/checkpoints/best_efficientnet_b0.pt
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./checkpoints:/app/checkpoints:ro
+    restart: unless-stopped
+
+  lungnet-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: lungnet-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+    depends_on:
+      - lungnet-backend
+    restart: unless-stopped

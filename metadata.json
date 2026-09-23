@@ -1,0 +1,6 @@
+{
+  "name": "LungNet Research Interface",
+  "description": "Undergraduate research platform for 3-class lung CT scan classification (Benign, Malignant, Normal) with patient-split audit, mock fallback, and human-in-the-loop review.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
